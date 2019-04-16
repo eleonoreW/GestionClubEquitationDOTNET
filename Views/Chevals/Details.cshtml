@@ -1,0 +1,66 @@
+﻿@model ClubEquitation.Models.Cheval
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Cheval</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nom)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Nom)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DateNaissance)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DateNaissance)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Descriptif)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Descriptif)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Commentaire)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Commentaire)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NbHeureMaxSemaine)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NbHeureMaxSemaine)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Taille)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Taille)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Proprietaire)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Proprietaire.UserName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Race)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Race.Nom)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

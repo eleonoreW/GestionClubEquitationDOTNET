@@ -1,0 +1,94 @@
+﻿@model IEnumerable<ClubEquitation.Models.Cheval>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Liste des chevaux</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<form asp-controller="Chevals" asp-action="Index">
+    <p>
+        <input type="text" name="searchString">
+        <input type="submit" value="Filter" />
+    </p>
+</form>
+
+<form asp-controller="Chevals" asp-action="RechAv">
+    <p>
+        Taille min:<input type="number" name="tailleMin">
+        Taille max:<input type="number" name="tailleMax">
+        Nom :<input type="text" name="nom">
+        <input type="submit" value="Recherche" />
+    </p>
+
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateNaissance)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descriptif)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Commentaire)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NbHeureMaxSemaine)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Taille)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Proprietaire)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Race)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateNaissance)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descriptif)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Commentaire)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NbHeureMaxSemaine)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Taille)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Proprietaire.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Race.Nom)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
