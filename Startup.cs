@@ -42,9 +42,6 @@ namespace ClubEquitation
                 options.AddPolicy("RequireAdministratorRole",
                      policy => policy.RequireRole("Administrator"));
             });
-
-        
-            
             var connection = @"Server=localhost\SQLEXPRESS;Database=BDClubEquitation;Trusted_Connection=True";
             services.AddDbContext<BDClubEquitationContext>(options => options.UseSqlServer(connection));
             services.AddDbContext<ClubEquitationContext>(options => options.UseSqlServer(connection));
@@ -67,7 +64,6 @@ namespace ClubEquitation
                 options.User.AllowedUserNameCharacters =
                 "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
                 options.User.RequireUniqueEmail = true;
-
             });
         }
 

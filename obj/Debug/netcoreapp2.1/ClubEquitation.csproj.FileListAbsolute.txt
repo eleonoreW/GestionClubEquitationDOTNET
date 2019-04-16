@@ -140,7 +140,6 @@ C:\Users\Eleonore\Documents\archi\ClubEquitation\obj\Debug\netcoreapp2.1\Razor\A
 C:\Users\Eleonore\Documents\archi\ClubEquitation\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\Account\Login.g.cshtml.cs
 C:\Users\Eleonore\Documents\archi\ClubEquitation\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\Account\Logout.g.cshtml.cs
 C:\Users\Eleonore\Documents\archi\ClubEquitation\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\Account\Manage\ChangePassword.g.cshtml.cs
-C:\Users\Eleonore\Documents\archi\ClubEquitation\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\Account\Manage\DeletePersonalData.g.cshtml.cs
 C:\Users\Eleonore\Documents\archi\ClubEquitation\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\Account\Manage\Index.g.cshtml.cs
 C:\Users\Eleonore\Documents\archi\ClubEquitation\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\Account\Manage\SetPassword.g.cshtml.cs
 C:\Users\Eleonore\Documents\archi\ClubEquitation\obj\Debug\netcoreapp2.1\Razor\Areas\Identity\Pages\Account\Manage\_Layout.g.cshtml.cs

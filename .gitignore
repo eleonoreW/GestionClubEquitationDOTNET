@@ -1,3 +1,7 @@
 
 \.vs/ClubEquitation/v15/
 \.vs/*
+
+*.pdb
+
+*.dll

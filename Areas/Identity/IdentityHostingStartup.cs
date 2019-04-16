@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using ClubEquitation.Areas.Identity.Data;
 using ClubEquitation.Models;
 using Microsoft.AspNetCore.Hosting;
@@ -23,7 +24,9 @@ namespace ClubEquitation.Areas.Identity
                 services.AddDefaultIdentity<ClubEquitationUser>()
                     .AddEntityFrameworkStores<ClubEquitationContext>()
                     .AddRoles<IdentityRole>();
+                    
             });
+           
         }
     }
 }
