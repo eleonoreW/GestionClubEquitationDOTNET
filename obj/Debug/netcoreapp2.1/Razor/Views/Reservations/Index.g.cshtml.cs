@@ -65,7 +65,7 @@ using ClubEquitation.Models;
             WriteLiteral("\r\n<h2>Liste des réservations</h2>\r\n\r\n<p>\r\n    ");
             EndContext();
             BeginContext(144, 37, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c4f926edb5b14058ac8c179a7068b466", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ed918173760e4e4e8d84e877288356f4", async() => {
                 BeginContext(167, 10, true);
                 WriteLiteral("Create New");
                 EndContext();
@@ -195,7 +195,7 @@ using ClubEquitation.Models;
             WriteLiteral("                    ");
             EndContext();
             BeginContext(1441, 56, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6e7830d8dac4468d8c8c95cf210cb65f", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7960004773734366bad1c4fcf1921841", async() => {
                 BeginContext(1486, 7, true);
                 WriteLiteral("Annuler");
                 EndContext();
@@ -238,7 +238,7 @@ using ClubEquitation.Models;
             WriteLiteral("                ");
             EndContext();
             BeginContext(1519, 59, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "84157717bc0c46969345091e6f00e1ac", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7d607820e40f432da1326b17eb4c89ed", async() => {
                 BeginContext(1567, 7, true);
                 WriteLiteral("Details");
                 EndContext();

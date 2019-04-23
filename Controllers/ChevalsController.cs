@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ClubEquitation.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ClubEquitation.Controllers
 {
@@ -77,7 +78,7 @@ namespace ClubEquitation.Controllers
 
             return View(cheval);
         }
-
+        [Authorize]
         // GET: Chevals/Create
         public IActionResult Create()
         {
@@ -85,7 +86,7 @@ namespace ClubEquitation.Controllers
             ViewData["RaceId"] = new SelectList(_context.Race, "Id", "Nom");
             return View();
         }
-
+        [Authorize]
         // POST: Chevals/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -105,6 +106,7 @@ namespace ClubEquitation.Controllers
         }
 
         // GET: Chevals/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -125,6 +127,7 @@ namespace ClubEquitation.Controllers
         // POST: Chevals/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,ProprietaireId,RaceId,Nom,DateNaissance,Descriptif,Commentaire,NbHeureMaxSemaine,Taille")] Cheval cheval)
@@ -160,6 +163,7 @@ namespace ClubEquitation.Controllers
         }
 
         // GET: Chevals/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -180,6 +184,7 @@ namespace ClubEquitation.Controllers
         }
 
         // POST: Chevals/Delete/5
+        [Authorize]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

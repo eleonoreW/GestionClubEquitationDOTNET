@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ClubEquitation.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ClubEquitation.Controllers
 {
@@ -60,6 +61,7 @@ namespace ClubEquitation.Controllers
         }
 
         // GET: Activites/Create
+        [Authorize]
         public IActionResult Create()
         {
             ViewData["LieuId"] = new SelectList(_context.Lieu, "Id", "Nom");
@@ -71,6 +73,7 @@ namespace ClubEquitation.Controllers
         // POST: Activites/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,ProfesseurId,LieuId,TypeId,Nom,Commentaire,Details,Date,Duree,Capacite")] Activite activite)
@@ -88,6 +91,7 @@ namespace ClubEquitation.Controllers
         }
 
         // GET: Activites/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -109,6 +113,7 @@ namespace ClubEquitation.Controllers
         // POST: Activites/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,ProfesseurId,LieuId,TypeId,Nom,Commentaire,Details,Date,Duree,Capacite,EstActive")] Activite activite)
@@ -145,6 +150,7 @@ namespace ClubEquitation.Controllers
         }
 
         // GET: Activites/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -166,6 +172,7 @@ namespace ClubEquitation.Controllers
         }
 
         // POST: Activites/Delete/5
+        [Authorize]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
@@ -180,7 +187,7 @@ namespace ClubEquitation.Controllers
         {
             return _context.Activite.Any(e => e.Id == id);
         }
-
+        [Authorize]
         public async Task<IActionResult> Reserver(int? id)
         {
             if (id == null)

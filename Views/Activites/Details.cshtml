@@ -56,7 +56,7 @@
             @Html.DisplayNameFor(model => model.Lieu)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Lieu.Id)
+            @Html.DisplayFor(model => model.Lieu.Nom)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Professeur)
@@ -73,6 +73,10 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    @if (User.Identity.IsAuthenticated)
+    {
+        <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+        <a asp-action="Delete" asp-route-id="@Model.Id"> Delete </a>
+    }
     <a asp-action="Index">Back to List</a>
 </div>

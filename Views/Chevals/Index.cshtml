@@ -1,4 +1,6 @@
-﻿@model IEnumerable<ClubEquitation.Models.Cheval>
+﻿@using Microsoft.AspNetCore.Authorization
+@inject IAuthorizationService AuthorizationService
+@model IEnumerable<ClubEquitation.Models.Cheval>
 
 @{
     ViewData["Title"] = "Index";
@@ -57,38 +59,43 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nom)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateNaissance)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Descriptif)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Commentaire)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NbHeureMaxSemaine)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Taille)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Proprietaire.UserName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Race.Nom)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nom)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateNaissance)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descriptif)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Commentaire)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NbHeureMaxSemaine)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Taille)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Proprietaire.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Race.Nom)
+                </td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.Id"> Details </a>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+
+                        <a asp-action="Delete" asp-route-id="@item.Id"> Delete </a>
+                    }
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
