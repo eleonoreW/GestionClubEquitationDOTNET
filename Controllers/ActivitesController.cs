@@ -181,23 +181,6 @@ namespace ClubEquitation.Controllers
             return _context.Activite.Any(e => e.Id == id);
         }
 
-
-
-
-
-        public int NbPlacesRestantes(Activite activite)
-        {
-            int NbPlacesRestantes = activite.Capacite;
-            var reservations = from c in _context.Reservation select c;
-            reservations = reservations.Where(s => s.ActiviteId.Equals(activite.Id));
-            reservations = reservations.Where(s => s.EstActive.Equals(true));
-            foreach (Reservation res in reservations)
-            {
-                NbPlacesRestantes -= res.NbPersonne;
-            }
-            return NbPlacesRestantes;
-        }
-
         public async Task<IActionResult> Reserver(int? id)
         {
             if (id == null)
@@ -210,8 +193,7 @@ namespace ClubEquitation.Controllers
             {
                 return NotFound();
             }
-            int nbActivite = NbPlacesRestantes(activite);
-            return RedirectToAction("Create", "Reservations", new { idActivite = activite.Id, nbPlaces = nbActivite });
+            return RedirectToAction("Create", "Reservations", new { idActivite = activite.Id});
         }
 
 

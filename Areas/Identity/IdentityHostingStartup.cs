@@ -22,8 +22,9 @@ namespace ClubEquitation.Areas.Identity
 
 
                 services.AddDefaultIdentity<ClubEquitationUser>()
+
+                    .AddRoles<IdentityRole>()
                     .AddEntityFrameworkStores<ClubEquitationContext>()
-                    .AddRoles<IdentityRole>();
                     
             });
            

@@ -71,7 +71,7 @@ using ClubEquitation.Models;
             WriteLiteral("\r\n<h2>Liste des chevaux</h2>\r\n\r\n<p>\r\n    ");
             EndContext();
             BeginContext(134, 37, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8bb5648e6cb8474c91846bf56e4ed379", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1695038554c2438080f6deeb5b4e463b", async() => {
                 BeginContext(157, 10, true);
                 WriteLiteral("Create New");
                 EndContext();
@@ -93,7 +93,7 @@ using ClubEquitation.Models;
             WriteLiteral("\r\n</p>\r\n");
             EndContext();
             BeginContext(179, 175, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8241f35e8d9e46fba7b2a0fdb5293ca8", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f5948bfa186940a6956755d1fe026b48", async() => {
                 BeginContext(229, 118, true);
                 WriteLiteral("\r\n    <p>\r\n        <input type=\"text\" name=\"searchString\">\r\n        <input type=\"submit\" value=\"Filter\" />\r\n    </p>\r\n");
                 EndContext();
@@ -119,7 +119,7 @@ using ClubEquitation.Models;
             WriteLiteral("\r\n\r\n");
             EndContext();
             BeginContext(358, 295, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d4cc59570b084c358ddca32a0675d244", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "83991043eb4844ffb939760428ba5e2d", async() => {
                 BeginContext(409, 237, true);
                 WriteLiteral("\r\n    <p>\r\n        Taille min:<input type=\"number\" name=\"tailleMin\">\r\n        Taille max:<input type=\"number\" name=\"tailleMax\">\r\n        Nom :<input type=\"text\" name=\"nom\">\r\n        <input type=\"submit\" value=\"Recherche\" />\r\n    </p>\r\n\r\n");
                 EndContext();
@@ -313,7 +313,7 @@ using ClubEquitation.Models;
             WriteLiteral("\r\n            </td>\r\n            <td>\r\n                ");
             EndContext();
             BeginContext(2481, 53, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f7d8cc16d8f74674bf301014acfb7b20", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c6b56a064f0b42989b7a47957b00459d", async() => {
                 BeginContext(2526, 4, true);
                 WriteLiteral("Edit");
                 EndContext();
@@ -348,7 +348,7 @@ using ClubEquitation.Models;
             WriteLiteral(" |\r\n                ");
             EndContext();
             BeginContext(2554, 59, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bb87ff9759e84ebda4c1e004200bf884", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "50281e5d86344dfb803fe65c9794e09c", async() => {
                 BeginContext(2602, 7, true);
                 WriteLiteral("Details");
                 EndContext();
@@ -383,7 +383,7 @@ using ClubEquitation.Models;
             WriteLiteral(" |\r\n                ");
             EndContext();
             BeginContext(2633, 57, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "21ddfc7556b94b81ab07462837e69f39", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6a92fa545f80463894b9021ff48e7e31", async() => {
                 BeginContext(2680, 6, true);
                 WriteLiteral("Delete");
                 EndContext();

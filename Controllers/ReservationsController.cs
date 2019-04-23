@@ -52,10 +52,20 @@ namespace ClubEquitation.Controllers
         }
 
         // GET: Reservations/Create
-        public async Task<IActionResult> Create(String idActivite, int nbPlaces)
+        public async Task<IActionResult> Create(int ?idActivite)
         {
+            
+            
+            var act = await _context.Activite.FindAsync(idActivite);
+            if (act == null)
+            {
+                return NotFound();
+            }else if(act.Date.CompareTo(DateTime.Now) < 0)
+            {
+                return NotFound();
+            }
             ViewBag.ActiviteId = idActivite;
-            ViewBag.NbPlaces = nbPlaces;
+            ViewBag.NbPlaces = NbPlacesRestantes(act);
 
             return View();
         }
@@ -91,8 +101,6 @@ namespace ClubEquitation.Controllers
             {
                 return NotFound();
             }
-            ViewData["ActiviteId"] = new SelectList(_context.Activite, "Id", "Nom", reservation.ActiviteId);
-            ViewData["UtilisateurId"] = new SelectList(_Identitycontext.Users, "Id", "UserName", reservation.UtilisateurId);
             
             return View(reservation);
         }
@@ -102,9 +110,10 @@ namespace ClubEquitation.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Date,NbPersonne,EstActive,UtilisateurId,ActiviteId")] Reservation reservation)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,EstActive")] Reservation reservation)
         {
-            if (id != reservation.Id)
+            var res = await _context.Reservation.FindAsync(id);
+            if (res == null)
             {
                 return NotFound();
             }
@@ -113,7 +122,8 @@ namespace ClubEquitation.Controllers
             {
                 try
                 {
-                    _context.Update(reservation);
+                    res.EstActive = false;
+                    _context.Update(res);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -133,37 +143,7 @@ namespace ClubEquitation.Controllers
             ViewData["UtilisateurId"] = new SelectList(_Identitycontext.Users, "Id", "UserName", reservation.UtilisateurId);
             return View(reservation);
         }
-
-        // GET: Reservations/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var reservation = await _context.Reservation
-                .Include(r => r.Activite)
-                .Include(r => r.Utilisateur)
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (reservation == null)
-            {
-                return NotFound();
-            }
-
-            return View(reservation);
-        }
-
-        // POST: Reservations/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var reservation = await _context.Reservation.FindAsync(id);
-            _context.Reservation.Remove(reservation);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
+       
 
         private bool ReservationExists(int id)
         {

@@ -40,7 +40,7 @@ namespace ClubEquitation
             services.AddAuthorization(options =>
             {
                 options.AddPolicy("RequireAdministratorRole",
-                     policy => policy.RequireRole("Administrator"));
+                     policy => policy.RequireRole("Admin"));
             });
             var connection = @"Server=localhost\SQLEXPRESS;Database=BDClubEquitation;Trusted_Connection=True";
             services.AddDbContext<BDClubEquitationContext>(options => options.UseSqlServer(connection));

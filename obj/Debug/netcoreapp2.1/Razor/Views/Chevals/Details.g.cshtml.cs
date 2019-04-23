@@ -224,7 +224,7 @@ using ClubEquitation.Models;
             WriteLiteral("\r\n        </dd>\r\n    </dl>\r\n</div>\r\n<div>\r\n    ");
             EndContext();
             BeginContext(1619, 54, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c7b3768e0a7b47fd9f103f16a5decd66", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ae59e2f78dbb408b8deb15bdd153fad1", async() => {
                 BeginContext(1665, 4, true);
                 WriteLiteral("Edit");
                 EndContext();
@@ -259,7 +259,7 @@ using ClubEquitation.Models;
             WriteLiteral(" |\r\n    ");
             EndContext();
             BeginContext(1681, 38, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6b48f73790e84bcc85e8f958cce21763", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5a9c688b8a9345f79931a28617ea9fa8", async() => {
                 BeginContext(1703, 12, true);
                 WriteLiteral("Back to List");
                 EndContext();
