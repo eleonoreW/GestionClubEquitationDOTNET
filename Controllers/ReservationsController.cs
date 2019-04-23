@@ -26,7 +26,8 @@ namespace ClubEquitation.Controllers
         // GET: Reservations
         public async Task<IActionResult> Index()
         {
-            var bDClubEquitationContext = _context.Reservation.Include(r => r.Activite).Include(r => r.Utilisateur);
+            var currentUser = this.User.FindFirstValue(ClaimTypes.NameIdentifier).ToString();
+            var bDClubEquitationContext = _context.Reservation.Include(r => r.Activite).Include(r => r.Utilisateur).Where(s => s.UtilisateurId.Equals(currentUser));
             return View(await bDClubEquitationContext.ToListAsync());
         }
 
@@ -51,9 +52,11 @@ namespace ClubEquitation.Controllers
         }
 
         // GET: Reservations/Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create(String idActivite, int nbPlaces)
         {
-            ViewData["ActiviteId"] = new SelectList(_context.Activite, "Id", "Nom");
+            ViewBag.ActiviteId = idActivite;
+            ViewBag.NbPlaces = nbPlaces;
+
             return View();
         }
 
@@ -72,8 +75,6 @@ namespace ClubEquitation.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ActiviteId"] = new SelectList(_context.Activite, "Id", "Nom", reservation.ActiviteId);
-            ViewData["UtilisateurId"] = new SelectList(this.User.FindFirstValue(ClaimTypes.NameIdentifier));
             return View(reservation);
         }
 
@@ -92,6 +93,7 @@ namespace ClubEquitation.Controllers
             }
             ViewData["ActiviteId"] = new SelectList(_context.Activite, "Id", "Nom", reservation.ActiviteId);
             ViewData["UtilisateurId"] = new SelectList(_Identitycontext.Users, "Id", "UserName", reservation.UtilisateurId);
+            
             return View(reservation);
         }
 
@@ -167,5 +169,20 @@ namespace ClubEquitation.Controllers
         {
             return _context.Reservation.Any(e => e.Id == id);
         }
+
+        public int NbPlacesRestantes(Activite activite)
+        {
+            int NbPlacesRestantes = activite.Capacite;
+            var reservations = from c in _context.Reservation select c;
+            reservations = reservations.Where(s => s.ActiviteId.Equals(activite.Id));
+            reservations = reservations.Where(s => s.EstActive.Equals(true));
+            foreach (Reservation res in reservations)
+            {
+                NbPlacesRestantes -= res.NbPersonne;
+            }
+            return NbPlacesRestantes;
+        }
+
+
     }
 }

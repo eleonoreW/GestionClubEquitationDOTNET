@@ -4,14 +4,16 @@ using ClubEquitation.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ClubEquitation.Migrations.BDClubEquitation
 {
     [DbContext(typeof(BDClubEquitationContext))]
-    partial class BDClubEquitationContextModelSnapshot : ModelSnapshot
+    [Migration("20190416180618_mymig1")]
+    partial class mymig1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
