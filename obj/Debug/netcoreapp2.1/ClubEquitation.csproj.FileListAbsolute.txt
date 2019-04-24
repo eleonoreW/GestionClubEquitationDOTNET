@@ -182,3 +182,4 @@ C:\Users\Eleonore\Documents\archi\ClubEquitation\obj\Debug\netcoreapp2.1\ClubEqu
 C:\Users\Eleonore\Documents\archi\ClubEquitation\obj\Debug\netcoreapp2.1\ClubEquitation.dll
 C:\Users\Eleonore\Documents\archi\ClubEquitation\obj\Debug\netcoreapp2.1\ClubEquitation.pdb
 C:\Users\Eleonore\Documents\archi\ClubEquitation\obj\Debug\netcoreapp2.1\ClubEquitation.csproj.CopyComplete
+C:\Users\Eleonore\Documents\archi\ClubEquitation\obj\Debug\netcoreapp2.1\Razor\Views\Home\Error404.g.cshtml.cs

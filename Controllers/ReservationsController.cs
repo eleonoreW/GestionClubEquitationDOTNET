@@ -101,7 +101,12 @@ namespace ClubEquitation.Controllers
             {
                 return NotFound();
             }
-            
+            var activite = await _context.Activite.FindAsync(reservation.ActiviteId);
+            if (activite == null || activite.Date.CompareTo(DateTime.Now) < 0)
+            {
+                return NotFound();
+            }
+
             return View(reservation);
         }
 
@@ -117,7 +122,6 @@ namespace ClubEquitation.Controllers
             {
                 return NotFound();
             }
-
             if (ModelState.IsValid)
             {
                 try

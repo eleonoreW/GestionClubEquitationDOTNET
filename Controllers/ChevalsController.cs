@@ -10,11 +10,11 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace ClubEquitation.Controllers
 {
+    [Authorize]
     public class ChevalsController : Controller
     {
         private readonly BDClubEquitationContext _context;
         private readonly ClubEquitationContext _Identitycontext;
-
         public ChevalsController(BDClubEquitationContext context, ClubEquitationContext Identitycontext)
         {
             _context = context;
@@ -26,6 +26,7 @@ namespace ClubEquitation.Controllers
             var bDClubEquitationContext = _context.Cheval.Include(c => c.Proprietaire).Include(c => c.Race);
             return View(await bDClubEquitationContext.ToListAsync());
         }*/
+        [AllowAnonymous]
         public async Task<IActionResult> Index(string searchString)
         {
             var chevaux = from c in _context.Cheval.Include(c => c.Proprietaire).Include(c => c.Race)
@@ -38,6 +39,7 @@ namespace ClubEquitation.Controllers
 
             return View(await chevaux.ToListAsync());
         }
+        [AllowAnonymous]
         public async Task<IActionResult> RechAv(int tailleMin, int tailleMax, string nom)
         {
             var chevaux = from c in _context.Cheval.Include(c => c.Proprietaire).Include(c => c.Race)
@@ -60,6 +62,7 @@ namespace ClubEquitation.Controllers
         }
 
         // GET: Chevals/Details/5
+        [AllowAnonymous]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -78,7 +81,7 @@ namespace ClubEquitation.Controllers
 
             return View(cheval);
         }
-        [Authorize]
+        
         // GET: Chevals/Create
         public IActionResult Create()
         {
@@ -86,7 +89,6 @@ namespace ClubEquitation.Controllers
             ViewData["RaceId"] = new SelectList(_context.Race, "Id", "Nom");
             return View();
         }
-        [Authorize]
         // POST: Chevals/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -106,7 +108,6 @@ namespace ClubEquitation.Controllers
         }
 
         // GET: Chevals/Edit/5
-        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -127,7 +128,6 @@ namespace ClubEquitation.Controllers
         // POST: Chevals/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,ProprietaireId,RaceId,Nom,DateNaissance,Descriptif,Commentaire,NbHeureMaxSemaine,Taille")] Cheval cheval)
@@ -163,7 +163,6 @@ namespace ClubEquitation.Controllers
         }
 
         // GET: Chevals/Delete/5
-        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -184,7 +183,6 @@ namespace ClubEquitation.Controllers
         }
 
         // POST: Chevals/Delete/5
-        [Authorize]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

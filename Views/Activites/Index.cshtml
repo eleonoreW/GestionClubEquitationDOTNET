@@ -5,98 +5,101 @@
 }
 
 <h2>Liste des activités</h2>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<form asp-controller="Activites" asp-action="Index">
+@if (User.Identity.IsAuthenticated)
+{
     <p>
-        <input type="text" name="searchString">
-        <input type="submit" value="Filter" />
+        <a asp-action="Create">Create New</a>
     </p>
-</form>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Nom)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Commentaire)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Details)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Date)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Duree)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Capacite)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EstActive)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Lieu)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Professeur)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Type)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nom)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Commentaire)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Details)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Date)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Duree)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Capacite)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EstActive)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Lieu.Nom)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Professeur.UserName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Type.Nom)
-            </td>
-            <td>
-                <a asp-action="Details" asp-route-id="@item.Id"> Details </a>
-                @if (User.Identity.IsAuthenticated)
-                {
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
-
-                    <a asp-action="Delete" asp-route-id="@item.Id"> Delete </a>
-
-                }
-                @if (User.Identity.IsAuthenticated && item.Date.CompareTo(DateTime.Now) > 0)
-                {<a asp-action="Reserver" asp-route-id="@item.Id">Réserver</a>}
-            </td>
-        </tr>
 }
-    </tbody>
-</table>
+    <form asp-controller="Activites" asp-action="Index">
+        <p>
+            <input type="text" name="searchString">
+            <input type="submit" value="Filter" />
+        </p>
+    </form>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nom)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Commentaire)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Details)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Date)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Duree)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Capacite)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EstActive)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Lieu)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Professeur)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Type)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nom)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Commentaire)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Details)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Duree)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Capacite)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EstActive)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Lieu.Nom)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Professeur.UserName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Type.Nom)
+                    </td>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@item.Id"> Details </a>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+
+                            <a asp-action="Delete" asp-route-id="@item.Id"> Delete </a>
+
+                        }
+                        @if (User.Identity.IsAuthenticated && item.Date.CompareTo(DateTime.Now) > 0)
+                        {<a asp-action="Reserver" asp-route-id="@item.Id">Réserver</a>}
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>

@@ -90,6 +90,11 @@ namespace ClubEquitation
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
+                routes.MapRoute(
+                        "404",
+                        "{*url}",
+                        new { controller = "HomeController", action = "Error404" }
+                );
             });
         }
     }

@@ -33,7 +33,10 @@ namespace ClubEquitation.Controllers
         {
             return View();
         }
-
+        public IActionResult Error404()
+        {
+            return View();
+        }
         public IActionResult Chevals()
         {
             return View();

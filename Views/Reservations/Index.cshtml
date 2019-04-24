@@ -6,9 +6,6 @@
 
 <h2>Liste des réservations</h2>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
@@ -51,7 +48,7 @@
                 @Html.DisplayFor(modelItem => item.Activite.Date)
             </td>
             <td>
-                @if (item.EstActive)
+                @if (item.EstActive &&  item.Activite.Date.CompareTo(DateTime.Now) > 0)
                 {
 
                     <a asp-action="Edit" asp-route-id="@item.Id">Annuler</a> 

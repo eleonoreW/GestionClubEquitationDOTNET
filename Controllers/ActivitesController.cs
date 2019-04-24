@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace ClubEquitation.Controllers
 {
+    [Authorize]
     public class ActivitesController : Controller
     {
         private readonly BDClubEquitationContext _context;
@@ -22,11 +23,7 @@ namespace ClubEquitation.Controllers
         }
 
         // GET: Activites
-        //public async Task<IActionResult> Index()
-        //{
-        //    var bDClubEquitationContext = _context.Activite.Include(a => a.Lieu).Include(a => a.Professeur).Include(a => a.Type);
-        //    return View(await bDClubEquitationContext.ToListAsync());
-        //}
+        [AllowAnonymous]
         public async Task<IActionResult> Index(string searchString)
         {
             var activites = from a in _context.Activite.Include(a => a.Lieu).Include(a => a.Professeur).Include(a => a.Type)
@@ -40,6 +37,7 @@ namespace ClubEquitation.Controllers
             return View(await activites.ToListAsync());
         }
         // GET: Activites/Details/5
+        [AllowAnonymous]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -61,7 +59,6 @@ namespace ClubEquitation.Controllers
         }
 
         // GET: Activites/Create
-        [Authorize]
         public IActionResult Create()
         {
             ViewData["LieuId"] = new SelectList(_context.Lieu, "Id", "Nom");
@@ -73,7 +70,6 @@ namespace ClubEquitation.Controllers
         // POST: Activites/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,ProfesseurId,LieuId,TypeId,Nom,Commentaire,Details,Date,Duree,Capacite")] Activite activite)
@@ -91,7 +87,6 @@ namespace ClubEquitation.Controllers
         }
 
         // GET: Activites/Edit/5
-        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -113,7 +108,6 @@ namespace ClubEquitation.Controllers
         // POST: Activites/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,ProfesseurId,LieuId,TypeId,Nom,Commentaire,Details,Date,Duree,Capacite,EstActive")] Activite activite)
@@ -150,7 +144,6 @@ namespace ClubEquitation.Controllers
         }
 
         // GET: Activites/Delete/5
-        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -172,7 +165,6 @@ namespace ClubEquitation.Controllers
         }
 
         // POST: Activites/Delete/5
-        [Authorize]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
@@ -187,7 +179,7 @@ namespace ClubEquitation.Controllers
         {
             return _context.Activite.Any(e => e.Id == id);
         }
-        [Authorize]
+
         public async Task<IActionResult> Reserver(int? id)
         {
             if (id == null)
